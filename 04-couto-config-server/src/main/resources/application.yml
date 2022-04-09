@@ -1,0 +1,19 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: couto-config-server
+  #config de onde vai buscar o profile (local)
+  #profiles:
+    #active:
+    #- native
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/dccouto/couto-config-server
+          default-label: main
+          search-paths:
+          - 'greeting-service*'
+          #username: dccouto (apenas se fosse um repositorio privado)
+          #password: senha (apenas se fosse um repositorio privado)
