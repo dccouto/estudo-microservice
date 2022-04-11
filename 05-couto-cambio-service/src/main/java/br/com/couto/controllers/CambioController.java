@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.couto.models.Cambio;
 import br.com.couto.services.CambioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name="Cambio service")
 @RestController
 @RequestMapping("cambio-service")
 public class CambioController {
@@ -25,6 +28,7 @@ public class CambioController {
 	private CambioService cambioService;
 	
 
+	@Operation(summary = "Converter cambio por moeda")
 	@GetMapping("{value}/{from}/{to}")
 	public ResponseEntity<Cambio> getCambio(
 			@PathVariable("value") BigDecimal value,

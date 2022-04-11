@@ -25,4 +25,7 @@ spring:
     - cambio_service
     user: root
     password: root
-        
+#Usado para que o swagger UI no gateway consiga achar o json do swagger nessa aplicação
+springdoc:
+  api-docs:
+    path: cambio-service/v3/api-docs

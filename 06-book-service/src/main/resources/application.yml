@@ -43,4 +43,8 @@ spring:
     - book_service
     user: root
     password: root
-        
+#Usado para que o swagger UI no gateway consiga achar o json do swagger nessa aplicação
+springdoc:
+  show-actuator: true
+  api-docs:
+    path: book-service/v3/api-docs

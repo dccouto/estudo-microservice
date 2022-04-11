@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
  * */
 @Configuration
 public class ApiGatewayConfiguration {
-	
-	@Bean
+	//Está sendo feito no properties.yaml pois lá o gateway consegue pegar as configs do swagger das aplicações.
+	/**@Bean
 	public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route(p -> p.path("/get")
@@ -25,6 +25,6 @@ public class ApiGatewayConfiguration {
 				.route(p -> p.path("/book-service/**")
 						.uri("lb://book-service"))
 				.build();
-	}
+	}**/
 
 }
