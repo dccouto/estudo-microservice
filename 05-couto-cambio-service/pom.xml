@@ -48,7 +48,7 @@
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
-		<!-- Open API para documentação (JSON) e swagger-->
+		<!-- Open API para documentação (JSON) e swagger -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-webmvc-core</artifactId>
@@ -59,8 +59,23 @@
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.5.7</version>
 		</dependency>
-		<!--  fim do swagger -->
-
+		<!-- fim do swagger -->
+		<!-- é o trace server usado para verificar o tracer de logs de microserviços -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
+		</dependency>
+		<!-- O sleuth atribui um id único as request, e o di é mantindo enquanto 
+			ele passa entre os micro serviços com isso, é possível rastrear -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<!-- messageria com rabitMq -->
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

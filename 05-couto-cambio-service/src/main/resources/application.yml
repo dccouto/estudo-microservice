@@ -25,6 +25,11 @@ spring:
     - cambio_service
     user: root
     password: root
+  sleuth: #usado para log de microserviços
+    sampler:
+      probability: 1.0 #vai logar 100% de tudo. Pode defnir por exemplo: 0.05 que seria 5%
+      
+#Usado para que o swagger UI no gateway consiga achar o json do swagger nessa aplicação
 #Usado para que o swagger UI no gateway consiga achar o json do swagger nessa aplicação
 springdoc:
   api-docs:

@@ -14,7 +14,9 @@ import br.com.couto.models.Cambio;
 import br.com.couto.services.CambioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Tag(name="Cambio service")
 @RestController
 @RequestMapping("cambio-service")
@@ -35,7 +37,7 @@ public class CambioController {
 			@PathVariable("from") String from,
 			@PathVariable("to") String to
 			) {
-		
+		log.info("Cambio foi chamado com os parâmetros -> {}, {} and {} ", value, from, to);
 		var port = environment.getProperty("local.server.port");
 		Cambio cambio = cambioService.getCambio(from, to, value);
 		cambio.setEnvironment(port);

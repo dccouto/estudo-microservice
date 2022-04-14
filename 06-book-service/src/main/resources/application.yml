@@ -43,6 +43,11 @@ spring:
     - book_service
     user: root
     password: root
+  sleuth: #usado para log de microserviços
+    sampler:
+      probability: 1.0 #vai logar 100% de tudo. Pode defnir por exemplo: 0.05 que seria 5%
+  zipkin:
+    base-url: http://127.0.0.1:9411/ #não precisa configurar o zipkin (portal para checar os logs) por que a configuração já é default
 #Usado para que o swagger UI no gateway consiga achar o json do swagger nessa aplicação
 springdoc:
   show-actuator: true
