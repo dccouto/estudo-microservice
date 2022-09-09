@@ -5,7 +5,10 @@ import com.ead.authuser.enums.UserType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +18,10 @@ import java.util.UUID;
 @Entity
 @Table(name = "TB_USERS")
 @Data
+@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)//quando serializar, campos nulos não serão mostrados
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
