@@ -57,7 +57,8 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.existsByEmail(email);
     }
 
-    private UserModel save(UserModel userModel) {
+    @Override
+    public UserModel save(UserModel userModel) {
         return userRepository.save(userModel);
     }
 
