@@ -1,5 +1,6 @@
 package com.ead.authuser.services.impl;
 
+import com.ead.authuser.controllers.UserController;
 import com.ead.authuser.dtos.UserDto;
 import com.ead.authuser.enums.UserStatus;
 import com.ead.authuser.enums.UserType;
@@ -18,6 +19,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -25,7 +29,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<UserModel> findAll(Specification<UserModel> spec, Pageable pageable) {
-        return userRepository.findAll(spec, pageable);
+        Page<UserModel> userModels = userRepository.findAll(spec, pageable);
+        if (!userModels.isEmpty()){
+            for (UserModel user : userModels.toList()){
+                user.add(linkTo(methodOn(UserController.class).getOneUser(user.getUserId())).withSelfRel());
+            }
+        }
+        return userModels;
     }
 
     @Override

@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,7 +23,7 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)//quando serializar, campos nulos não serão mostrados
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserModel implements Serializable {
+public class UserModel extends RepresentationModel<UserModel> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
