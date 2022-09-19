@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -54,6 +56,18 @@ public class CourseModel implements Serializable {
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    /**
+     * FetchMode.JOIN o hibernate fará apenas uma única consulta, mas se tiver utilizando o "fetch = FetchType.LAZY"
+     * o FetchMode.JOIN 'sobrescreverá' o fetch = FetchType.LAZY que passará a se comportar como EAGER, pois é
+     * necessário trazer tudo de uma só vez.
+     *
+     * FetchMode.SUBSELECT o hibernate fará uma consulta principal para trazer a entidade e mais uma consulta para
+     * trazer os relacionamentos, esse modo é o mais adequado quando se está utilizando o LAZY.
+     *
+     * Por default o FetchMode é o JOIN mas se o FetchType foi definido, ele irá trazer de acordo com a definição,
+     * isso é, não ignorando o tipo de FetchType
+    */
+    @Fetch(FetchMode.SUBSELECT)
     private Set<ModuleModel> modules;
 
 
