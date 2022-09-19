@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -68,6 +70,7 @@ public class CourseModel implements Serializable {
      * isso é, não ignorando o tipo de FetchType
     */
     @Fetch(FetchMode.SUBSELECT)
+    //@OnDelete(action = OnDeleteAction.CASCADE) é um delete que o banco realiza o delete, o responsabilidade fica com o banco de dados
     private Set<ModuleModel> modules;
 
 
