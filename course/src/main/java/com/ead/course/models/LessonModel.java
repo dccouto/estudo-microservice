@@ -39,4 +39,5 @@ public class LessonModel implements Serializable {
     @JoinColumn(name = "FK_module")
     private ModuleModel module;
 
+
 }
