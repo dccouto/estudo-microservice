@@ -45,4 +45,9 @@ public class ModuleServiceImpl implements ModuleService {
     public List<ModuleModel> findAllByCourse_CourseId(UUID courseId) {
         return moduleRepository.findAllModuleModelByCourse_courseId(courseId);
     }
+
+    @Override
+    public Optional<ModuleModel> findById(UUID moduleId) {
+        return moduleRepository.findById(moduleId);
+    }
 }
