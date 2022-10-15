@@ -4,16 +4,21 @@ import com.ead.authuser.dtos.UserDto;
 import com.ead.authuser.models.UserModel;
 import com.ead.authuser.services.UserService;
 import com.fasterxml.jackson.annotation.JsonView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {
+
+    Logger log = LoggerFactory.getLogger(AuthenticationController.class);
 
     @Autowired
     private UserService userService;
@@ -29,6 +34,16 @@ public class AuthenticationController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Email is Already Taken!");
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerNewUser(userDto));
+    }
+
+    @GetMapping
+    public String index(){
+        log.trace("TRACE");
+        log.debug("DEBUG");
+        log.info("INFO");
+        log.warn("WARN");
+        log.error("ERROR");
+        return "Logging Spring boot...";
     }
 
 }

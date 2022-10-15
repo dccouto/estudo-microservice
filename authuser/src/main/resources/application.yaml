@@ -15,3 +15,14 @@ spring:
     properties:
       hibernate:
         show_sql: true
+#ativar a cor do LOG no console
+  output:
+    ansi:
+      enabled: Always
+
+logging:
+  level:
+    com.ead: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
