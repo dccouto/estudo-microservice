@@ -35,7 +35,7 @@ public class AuthenticationController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Email is Already Taken!");
         }
         UserModel userModel = userService.registerNewUser(userDto);
-        log.debug("POST registerUser userModel saved {}", userModel.toString());
+        log.debug("POST registerUser userId saved {}", userModel.getUserId());
         log.info("User saved successfully - id {}", userModel.getUserId());
         return ResponseEntity.status(HttpStatus.CREATED).body(userModel);
     }

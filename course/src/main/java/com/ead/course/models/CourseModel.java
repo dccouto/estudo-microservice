@@ -73,5 +73,8 @@ public class CourseModel implements Serializable {
     //@OnDelete(action = OnDeleteAction.CASCADE) é um delete que o banco realiza o delete, o responsabilidade fica com o banco de dados
     private Set<ModuleModel> modules;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    private Set<CourseUserModel> coursesUsers;
 
 }
