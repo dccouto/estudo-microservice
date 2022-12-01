@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -65,13 +66,16 @@ public class CourseController {
 
     @GetMapping
     public ResponseEntity<?> getAllCourses(SpecificationTemplate.CourseSpec spec,
-                                           @PageableDefault(page = 0, size = 10, sort = "courseId", direction = Sort.Direction.ASC) Pageable pageable){
+                                           @PageableDefault(page = 0, size = 10, sort = "courseId", direction = Sort.Direction.ASC) Pageable pageable,
+                                           @RequestParam(required = false) UUID userId){
+        if(!Objects.isNull(userId)){
+            return ResponseEntity.status(HttpStatus.OK).body(this.courseService.findAll(SpecificationTemplate.courseUserId(userId).and(spec), pageable));
+        }
         return ResponseEntity.status(HttpStatus.OK).body(this.courseService.findAll(spec, pageable));
-
     }
 
     @GetMapping("/{idCourse}")
-    public ResponseEntity<?> getAllCourses(@PathVariable UUID idCourse){
+    public ResponseEntity<?> getOneCourses(@PathVariable UUID idCourse){
         Optional<CourseModel> couserModelOptional = this.courseService.findById(idCourse);
         if (couserModelOptional.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado");
