@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class UtilsServiceimpl implements UtilsService {
+class UtilsServiceimpl implements UtilsService {
 
     private final String REQUEST_URI = "http://localhost:8082";
 
