@@ -4,6 +4,7 @@ import com.ead.authuser.controllers.UserController;
 import com.ead.authuser.dtos.UserDto;
 import com.ead.authuser.enums.UserStatus;
 import com.ead.authuser.enums.UserType;
+import com.ead.authuser.models.UserCourseModel;
 import com.ead.authuser.models.UserModel;
 import com.ead.authuser.repositories.UserCourseRepository;
 import com.ead.authuser.repositories.UserRepository;
@@ -31,4 +32,13 @@ public class UserCourseServiceImpl implements UserCourseService {
 
     private final UserCourseRepository userCourseRepository;
 
+    @Override
+    public boolean existsByUserAndCourseId(UserModel userModel, UUID courseId) {
+        return userCourseRepository.existsByUserAndCourseId(userModel, courseId);
+    }
+
+    @Override
+    public UserCourseModel save(UserCourseModel userCourseModel) {
+        return userCourseRepository.save(userCourseModel);
+    }
 }

@@ -3,7 +3,6 @@ package com.ead.authuser.clients;
 import com.ead.authuser.dtos.CourseDto;
 import com.ead.authuser.dtos.ResponsePageDto;
 import com.ead.authuser.services.UtilsService;
-import com.fasterxml.jackson.core.TreeNode;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -21,7 +20,7 @@ import java.util.UUID;
 
 @Log4j2
 @Component
-public class UserClient {
+public class CourseClient {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -34,7 +33,7 @@ public class UserClient {
     public Page<CourseDto> getAllCoursesByUser(UUID userId, Pageable pageable){
         List<CourseDto> searchResult = null;
         ResponseEntity<ResponsePageDto<CourseDto>> result = null;
-        String url = utilsService.createUrl(userId, pageable);
+        String url = utilsService.createUrlGetAllCoursesByUser(userId, pageable);
         log.debug("Request URL: {}", url);
         log.info("Request URL: {}", url);
         try{
