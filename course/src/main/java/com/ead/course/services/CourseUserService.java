@@ -1,13 +1,14 @@
 package com.ead.course.services;
 
 import com.ead.course.models.CourseModel;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
+import com.ead.course.models.CourseUserModel;
 
-import java.util.Optional;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public interface CourseUserService {
 
+    boolean existsByCourseAndUserId(CourseModel courseModel, @NotNull UUID userId);
+
+    Object save(CourseUserModel convertToCourseUserModel);
 }
